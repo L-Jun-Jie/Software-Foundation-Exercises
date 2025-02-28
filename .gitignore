@@ -1,0 +1,11 @@
+.*
+*.html
+*.svg
+*.aux
+*.glob
+*.vo
+*.vok
+*.vos
+.devcontainer/
+common/
+!.gitignore
