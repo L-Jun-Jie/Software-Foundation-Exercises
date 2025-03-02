@@ -6,6 +6,9 @@
 *.vo
 *.vok
 *.vos
+*.ml
+*.mli
+*.conf
 .devcontainer/
 common/
 !.gitignore
