@@ -1283,11 +1283,18 @@ Proof. reflexivity. Qed.
     Finding the right type can be tricky. *)
 
 Definition exp (n m : cnat) : cnat :=
-  fun (X : Type) (f: X->X) => m (X -> X) (n X) f.
+  fun (X : Type) (f: X->X) (x : X) => ((m (X -> X)) (n X)) f x.
 
 (**
-[n X] is a fun, need [ X->X ] and [ x : X ]
-[m (X->X)] is a fun, need [ (X->X) -> (X->X) ] and [f : X->X]
+(m (X->X))  -- Apply m to the function space, obtaining a higher-order combinator
+    (n X)    -- Provide a higher-order function that applies n times
+    f        -- Base function f
+    x        -- Initial value x
+  
+  m (X -> X)             -- ((X->X)->X->X)->(X->X)->X
+  n X                    -- (X->X)->X->X
+  ((m (X -> X)) (n X))   -- (X->X)->X->X
+  ((m (X -> X)) (n X)) f -- X->X
 *)
 
 Example exp_1 : exp two two = plus two two.
